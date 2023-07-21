@@ -2,8 +2,12 @@
 <h1 align="center">
   <img height="64px" src="https://img.icons8.com/color/48/000000/delphi-ide.png"> Delphi
 </h1>
-
 <p align="center">🚀 Projeto de entrega de produtos farmacêuticos, desenvolvido na linguagem de programação Delphi. Avaliação para a PHARMAPELE.</p>
+<p></p>
+<p></p>
+<h4 align="center"> 
+	🚧  Projeto DELIVERY-FARMACIA  🚀 Em construção...  🚧
+</h4>
 
 <!--ts-->
    * [Sobre](#Sobre)
