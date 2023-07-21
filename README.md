@@ -15,18 +15,22 @@
    * [Tecnologias](#tecnologias)
 <!--te-->
 
-# Sobre
+### Sobre
 <p>A</p>
 <p>A</p>
 <p>A</p>
 
-# Instalação
+### Instalação
 <p>A</p>
 <p>A</p>
 <p>A</p>
 
-# Tecnologias
-<p>A</p>
-<p>A</p>
-<p>A</p>
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Delphi Community Edition - 11.3 Alexandria](https://www.embarcadero.com/br/products/delphi/starter/free-download)
+- [Firebird 3.0 Win32-bits](https://firebirdsql.org/en/firebird-3-0-10/#Win32)
+- [DBeaver Community](https://dbeaver.io/)
+
 
