@@ -26,7 +26,7 @@
 <p>A</p>
 
 ### Tecnologias 
-🛠 Tecnologias
+🛠 Ferramentas utilizadas
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
