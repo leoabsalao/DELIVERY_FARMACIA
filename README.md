@@ -16,9 +16,12 @@
 <!--te-->
 
 ### Sobre
-<p>A</p>
-<p>A</p>
-<p>A</p>
+<p>
+Principal ferramenta utilizada pelos atendentes para gerenciar o processo de entrega dos
+produtos aos clientes feito pelos entregadores. Esse sistema será usado para criar pedidos,
+selecionar os produtos desejados e instruir os entregadores sobre os detalhes da entrega,
+como rotas e detalhes dos pedidos enviados
+</p>
 
 ### Instalação
 <p>A</p>
