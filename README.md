@@ -70,6 +70,7 @@ Proporcionando a eficiência de principios e padrôes que designam a criação d
 O Sistema <b>DELIVERY&FARMA</b> foi codificado conforme o escopo apresentado logo abaixo:
 - 80% das transações em STORED PROCEDURE e TRIGGERS;
 - Programação Orientado a Objeto (Herança, Polimofismo, Abstração e Encapsulamento);
-- Uso de Interfaces e Classes, para o bom controle do código.
+- Uso de Interfaces e Classes, para o bom controle do código;
+- Para a conexão com o Banco de Dados foi criado a Classe de conexão chamada de "TConexão" e o componente FIREDAC.
 </p>
 
