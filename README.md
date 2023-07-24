@@ -1,4 +1,4 @@
-<h1 align="center">DELIVERY FARMACIA</h1>
+<h1 align="center">DELIVERY&FARMA</h1>
 <h1 align="center">
   <img height="64px" src="https://img.icons8.com/color/48/000000/delphi-ide.png"> Delphi
 </h1>
@@ -6,7 +6,7 @@
 <p></p>
 <p></p>
 <h4 align="center"> 
-	🚧  Projeto DELIVERY-FARMACIA  🚀 Em construção...  🚧
+	🚧  Projeto DELIVERY&FARMA  🚀 Em construção...  🚧
 </h4>
 
 <!--ts-->
@@ -27,8 +27,8 @@ como rotas e detalhes dos pedidos enviados.
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+[Delphi](https://www.embarcadero.com/br/products/delphi/starter/free-download), [Firebird](https://firebirdsql.org/en/firebird-3-0-10/#Win32) e um Sistema Gerenciador de Banco de Dados ( [DBeaver](https://dbeaver.io/) /[FlameRobin](http://www.flamerobin.org/) / [IBExpert](https://www.ibexpert.net/downloadcenter/) ).
+
 
 ### 🎲 Rodando o Back End (servidor)
 
