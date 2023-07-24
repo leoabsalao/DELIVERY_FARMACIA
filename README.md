@@ -67,10 +67,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <p> Sistema desenvolvido baseando-se nos mais numerosos critérios de boas práticas, tendo como referência o livro "Código Limpo" de Robert Martin, comum nas programações de liguagens P.O.O (Programação Orientada a Objeto), 
 ou seja, viabilizando a eficiência de principios e padrôes que designam a criação de um código limpo. 
 
-O Sistema <b>DELIVERY&FARMA</b> foi desenvolvido conforme o escopo apresentado logo abaixo:
+O Sistema <b>DELIVERY&FARMA</b> foi codificado conforme o escopo apresentado logo abaixo:
 - 80% das transações em STORED PROCEDURE e TRIGGERS;
 - Programação Orientado a Objeto (Herança, Polimofismo, Abstração e Encapsulamento);
 - Criação de Interfaces e Classes, para o bom controle do código;
- 
+- Preocupação em liberar da memória o uso da Classe instanciada. 
 </p>
 
