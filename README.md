@@ -42,8 +42,8 @@ $ C:\DEV\PROJETOS\...
 # O  banco de dados esta dentro da pasta:
 $ ...\PROJFARMACIA\bd\..
 
-# Instale as dependências
-$ npm install
+# Aponte o caminho do banco com a classe de conexão do projeto através do arquivo .Ini
+$ ...\PROJFARMACIA\Win32\Debug\Config.ini
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev:server
