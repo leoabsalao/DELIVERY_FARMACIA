@@ -27,7 +27,7 @@ como rotas e detalhes dos pedidos enviados.
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Delphi CE 11.3](https://www.embarcadero.com/br/products/delphi/starter/free-download), [Firebird 3.0](https://firebirdsql.org/en/firebird-3-0-10/#Win32) e um Sistema Gerenciador de Banco de Dados ( [DBeaver](https://dbeaver.io/) /[FlameRobin](http://www.flamerobin.org/) / [IBExpert](https://www.ibexpert.net/downloadcenter/) ).
+[Delphi CE 11.3](https://www.embarcadero.com/br/products/delphi/starter/free-download), [Firebird 3.0](https://firebirdsql.org/en/firebird-3-0-10/#Win32) e um Sistema Gerenciador de Banco de Dados ( [DBeaver](https://dbeaver.io/) / [FlameRobin](http://www.flamerobin.org/) / [IBExpert](https://www.ibexpert.net/downloadcenter/) ).
 
 
 ### 🎲 Rodando o Back End (servidor)
@@ -42,13 +42,14 @@ $ C:\DEV\PROJETOS\...
 # O  banco de dados esta dentro da pasta:
 $ ...\PROJFARMACIA\bd\..
 
-# Aponte o caminho do banco com a classe de conexão do projeto através do arquivo .Ini
+# Aponte o caminho do banco Firebird com a classe de conexão do projeto através do arquivo .Ini
 $ ...\PROJFARMACIA\Win32\Debug\Config.ini
 
-# Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
+# O Executável do projeto encontra-se na pasta chmamada "Debug"
+$ C:\DEV\PROJETOS\PROJFARMACIA\Win32\Debug
 
-# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
+# Configuração do banco de dados:
+$ Firebird 3.0 32bits - Login: SYSDBA / Password: masterkey / Port: 3050
 ```
 
 ## Tecnologias 
@@ -56,7 +57,7 @@ $ npm run dev:server
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Delphi Community Edition - 11.3 Alexandria](https://www.embarcadero.com/br/products/delphi/starter/free-download)
+- [Delphi Community Edition 11.3 Alexandria](https://www.embarcadero.com/br/products/delphi/starter/free-download)
 - [Firebird 3.0 Win32-bits](https://firebirdsql.org/en/firebird-3-0-10/#Win32)
 - [DBeaver Community](https://dbeaver.io/)
 
