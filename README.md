@@ -27,20 +27,20 @@ como rotas e detalhes dos pedidos enviados.
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Delphi](https://www.embarcadero.com/br/products/delphi/starter/free-download), [Firebird](https://firebirdsql.org/en/firebird-3-0-10/#Win32) e um Sistema Gerenciador de Banco de Dados ( [DBeaver](https://dbeaver.io/) /[FlameRobin](http://www.flamerobin.org/) / [IBExpert](https://www.ibexpert.net/downloadcenter/) ).
+[Delphi CE 11.3](https://www.embarcadero.com/br/products/delphi/starter/free-download), [Firebird 3.0](https://firebirdsql.org/en/firebird-3-0-10/#Win32) e um Sistema Gerenciador de Banco de Dados ( [DBeaver](https://dbeaver.io/) /[FlameRobin](http://www.flamerobin.org/) / [IBExpert](https://www.ibexpert.net/downloadcenter/) ).
 
 
 ### 🎲 Rodando o Back End (servidor)
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/tgmarinho/nlw1>
+$ git clone <https://github.com/leoabsalao/DELIVERY_FARMACIA.git>
 
-# Acesse a pasta do projeto no terminal/cmd
-$ cd nlw1
+# Coloque o projeto, preferencialmente, na Unidade C do Desktop. Caminho atual: 
+$ C:\DEV\PROJETOS\...
 
-# Vá para a pasta server
-$ cd server
+# O  banco de dados esta dentro da pasta:
+$ ...\PROJFARMACIA\bd\..
 
 # Instale as dependências
 $ npm install
