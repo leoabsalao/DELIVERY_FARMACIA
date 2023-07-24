@@ -64,6 +64,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## Desenvolvimento
 
-<p> Sistema desenvolvido baseando-se nos mais numerosos critérios de boas práticas, tendo como referência o livro "Código Limpo" de Robert Martin, comum nas programações de liguagens P.O.O (Programação Orientada a Objeto), </p>
-<p> ou seja, viabilizando a eficiência de principios, padrôes e boas práticas na criação de um código limpo.</p>
+<p> Sistema desenvolvido baseando-se nos mais numerosos critérios de boas práticas, tendo como referência o livro "Código Limpo" de Robert Martin, comum nas programações de liguagens P.O.O (Programação Orientada a Objeto), 
+ou seja, viabilizando a eficiência de principios, padrôes e boas práticas na criação de um código limpo. </p>
 
