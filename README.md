@@ -2,7 +2,9 @@
 <h1 align="center">
   <img height="64px" src="https://img.icons8.com/color/48/000000/delphi-ide.png"> Delphi
 </h1>
-<p align="center">🚀 Projeto de entrega de produtos farmacêuticos, desenvolvido na linguagem de programação Delphi. Avaliação para a PHARMAPELE.</p>
+<p align="left">🚀 O Projeto <b>DELIVERY&FARMA</b> foi desenvolvido com a finalidade de gerenciar os envios de produtos adquiridos pelos clientes registrado no sistema.   
+	Demostrando cuidado e respeito com o cliente final, o sistema gerencia a entrega dos produtos pela ordem de prioridade desiginado em sua regra de negócio, ou seja, 
+        medicamentos que são do tipo sensíveis e controlados, possuem a sua entrega na primeira escala de prioridade.</p>
 <p></p>
 <p></p>
 <h4 align="center"> 
