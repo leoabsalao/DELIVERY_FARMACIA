@@ -13,6 +13,7 @@
    * [Sobre](#Sobre)
    * [Instalação](#instalacao)
    * [Tecnologias](#tecnologias)
+   * [Desenvolvimento](#desenvolvimento)
 <!--te-->
 
 ## Sobre
@@ -61,4 +62,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Firebird 3.0 Win32-bits](https://firebirdsql.org/en/firebird-3-0-10/#Win32)
 - [DBeaver Community](https://dbeaver.io/)
 
+## Desenvolvimento
+
+<p> Sistema desenvolvido baseando-se nos mais numerosos critérios de boas práticas, tendo como referência o livro "Código Limpo" de Robert Martin, comum nas programações de liguagens P.O.O (Programação Orientada a Objeto), </p>
+<p> ou seja, viabilizando a eficiência de principios, padrôes e boas práticas na criação de um código limpo.</p>
 
