@@ -48,7 +48,7 @@ $ ...\PROJFARMACIA\bd\..
 # Aponte o caminho do banco Firebird com a classe de conexão do projeto através do arquivo .Ini
 $ ...\PROJFARMACIA\Win32\Debug\Config.ini
 
-# O Executável do projeto encontra-se na pasta chmamada "Debug"
+# O Executável do projeto encontra-se na pasta chamada "Debug"
 $ C:\DEV\PROJETOS\PROJFARMACIA\Win32\Debug
 
 # Configuração do banco de dados:
@@ -73,6 +73,6 @@ O Sistema <b>DELIVERY&FARMA</b> foi codificado conforme o escopo apresentado log
 - 80% das transações em STORED PROCEDURE e TRIGGERS;
 - Programação Orientado a Objeto (Herança, Polimofismo, Abstração e Encapsulamento);
 - Uso de Interfaces e Classes, para o bom controle do código, evitando assim a redundância na programação; 
-- Para a conexão com o Banco de Dados foi criado a Classe de conexão chamada de "TConexão" e o componente FIREDAC.
+- Para a conexão com o Banco de Dados foi criada a Classe de conexão chamada de "TConexão" e o componente FIREDAC.
 </p>
 
