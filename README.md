@@ -7,9 +7,6 @@
         medicamentos que são do tipo sensíveis e controlados, possuem a sua entrega na primeira escala de prioridade.</p>
 <p></p>
 <p></p>
-<h4 align="center"> 
-	🚧  Projeto DELIVERY&FARMA  🚀 Em construção...  🚧
-</h4>
 
 <!--ts-->
    * [Sobre](#Sobre)
