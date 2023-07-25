@@ -1,0 +1,291 @@
+unit Model.Classe.Pessoa;
+
+interface
+uses Model.Interfaces.Pessoa, uConexao,System.SysUtils, System.Classes;
+
+type
+   TModelPessoa = class(TInterfacedObject, iPessoa)
+   private
+     FCodigo : integer;
+     FCod_TipoPessoa : integer;
+     FTipoPessoa : string;
+     FNome : string;
+     FRG : string;
+     FCPF : string;
+     FCNPJ : string;
+     FDT_NASC : string;
+     FEmail : string;
+     FCelular : string;
+     FCEP : string;
+     FLogradouro : string;
+     FNumero : integer;
+     FBairro : string;
+     FCidade : string;
+     FEstado : string;
+     FPais : string;
+     FComplemento : string;
+
+     procedure SetCodigo(const Value: integer);
+     procedure SetCod_TipoPessoa(const Value: integer);
+     procedure SetTipoPessoa(const Value: string);
+     procedure SetNome(const Value: string);
+     procedure SetRG(const Value: string);
+     procedure SetCPF(const Value: string);
+     procedure SetCNPJ(const Value: string);
+     procedure SetDT_NASC(const Value: string);
+     procedure SetEmail(const Value: string);
+     procedure SetCelular(const Value: string);
+     procedure SetCEP(const Value: string);
+     procedure SetLogradouro(const Value: string);
+     procedure SetNumero(const Value: integer);
+     procedure SetBairro(const Value: string);
+     procedure SetCidade(const Value: string);
+     procedure SetEstado(const Value: string);
+     procedure SetPais(const Value: string);
+     procedure SetComplemento(const Value: string);
+   public
+     constructor Create;
+     destructor Destroy; override;
+
+     property Codigo : integer read FCodigo write SetCodigo;
+     property Cod_TipoPessoa : integer read FCod_TipoPessoa write SetCod_TipoPessoa;
+     property TipoPessoa : string read FTipoPessoa write SetTipoPessoa;
+     property Nome : string read FNome write SetNome;
+     property RG : string read FRG write SetRG;
+     property CPF : string read FRG write SetRG;
+     property CNPJ : string read FCNPJ write SetCNPJ;
+     property DT_NASC : string read FDT_NASC write SetDT_NASC;
+     property Email : string read FEmail write SetEmail;
+     property Celular : string read FCelular write SetCelular;
+     property CEP : string read FCEP write SetCEP;
+     property Logradouro : string read FLogradouro write SetLogradouro;
+     property Numero : integer read FNumero write SetNumero;
+     property Bairro : string read FBairro write SetBairro;
+     property Cidade : string read FCidade write SetCidade;
+     property Estado : string read FEstado write SetEstado;
+     property Pais : string read FPais write SetPais;
+     property Complemento : string read FComplemento write SetComplemento;
+
+     procedure Inserir(p_Cod_TipoPessoa : integer; p_Nome : string; p_RG : string;
+                        p_CPF : string; p_CNPJ : string; p_DT_NASC : string; p_Email : string;
+                        p_Fone : string; p_CEP : string; p_Logradouro : string;
+                        p_Numero : integer; p_Bairro : string; p_Cidade : string;
+                        p_Estado : string; p_Pais : string; p_Complemento : string);
+     procedure Deletar(p_Id : integer);
+     procedure Alterar(p_Id : integer; p_Cod_TipoPessoa : integer; p_Nome : string; p_RG : string;
+                        p_CPF : string; p_CNPJ : string; p_DT_NASC : string; p_Email : string;
+                        p_Fone : string; p_CEP : string; p_Logradouro : string;
+                        p_Numero : integer; p_Bairro : string; p_Cidade : string;
+                        p_Estado : string; p_Pais : string; p_Complemento : string);
+   end;
+
+implementation
+
+var vConex : TConexao;
+
+{ TModelPessoa }
+
+procedure TModelPessoa.Alterar(p_Id, p_Cod_TipoPessoa: integer; p_Nome, p_RG,
+  p_CPF, p_CNPJ, p_DT_NASC, p_Email, p_Fone, p_CEP, p_Logradouro: string;
+  p_Numero: integer; p_Bairro, p_Cidade, p_Estado, p_Pais,
+  p_Complemento: string);
+var
+  vAlterar : TConexao;
+begin
+  vAlterar := TConexao.Create;
+  try
+    try
+      With vAlterar.cQuery do
+      begin
+         SQL.Add('EXECUTE PROCEDURE SP_PESSOA_UPDATE(:P_ID, :P_COD_TIPOPESSOA,:P_NOME,:P_RG,:P_CPF,:P_CNPJ,:P_DT_NASC,:P_EMAIL, ');
+         SQL.Add('  :P_FONE,:P_CEP,:P_LOGRADOURO,:P_NUMERO,:P_BAIRRO,:P_CIDADE,:P_ESTADO,:P_PAIS,:P_COMPLEMENTO) ');
+         ParamByName('P_ID').AsInteger := p_Id;
+         ParamByName('P_COD_TIPOPESSOA').AsInteger := p_Cod_TipoPessoa;
+         ParamByName('P_NOME').AsString := p_Nome;
+         ParamByName('P_RG').AsString := p_RG;
+         ParamByName('P_CPF').AsString := p_CPF;
+         ParamByName('P_CNPJ').AsString := p_CNPJ;
+         ParamByName('P_DT_NASC').AsString := p_DT_NASC;
+         ParamByName('P_EMAIL').AsString := p_Email;
+         ParamByName('P_FONE').AsString := p_Fone;
+         ParamByName('P_CEP').AsString := p_CEP;
+         ParamByName('P_LOGRADOURO').AsString := p_Logradouro;
+         ParamByName('P_NUMERO').AsInteger := p_Numero;
+         ParamByName('P_BAIRRO').AsString := p_Bairro;
+         ParamByName('P_CIDADE').AsString := p_Cidade;
+         ParamByName('P_ESTADO').AsString := p_Estado;
+         ParamByName('P_PAIS').AsString := p_Pais;
+         ParamByName('P_COMPLEMENTO').AsString := p_Complemento;
+         ExecSQL;
+      end;
+    except
+       raise Exception.Create('Erro na inclusão. Movimentacao Cancelada.');
+    end;
+  finally
+   vAlterar.Free;
+  end;
+
+end;
+
+constructor TModelPessoa.Create;
+begin
+  //
+end;
+
+procedure TModelPessoa.Deletar(p_Id: integer);
+var
+  vDeletar : TConexao;
+begin
+  vDeletar := TConexao.Create;
+  try
+    try
+      With vDeletar.cQuery do
+      begin
+         SQL.Add('EXECUTE PROCEDURE SP_PESSOA_DELETE(:P_ID)');
+         ParamByName('P_ID').AsInteger := p_Id;
+         ExecSQL;
+      end;
+    except
+       raise Exception.Create('Erro na deleção. Movimentacao Cancelada.');
+    end;
+  finally
+   vDeletar.Free;
+  end;
+end;
+
+destructor TModelPessoa.Destroy;
+begin
+  inherited;
+end;
+
+procedure TModelPessoa.Inserir(p_Cod_TipoPessoa: integer; p_Nome, p_RG, p_CPF,
+  p_CNPJ, p_DT_NASC, p_Email, p_Fone, p_CEP, p_Logradouro: string;
+  p_Numero: integer; p_Bairro, p_Cidade, p_Estado, p_Pais,
+  p_Complemento: string);
+var
+  vInserir : TConexao;
+begin
+  vInserir := TConexao.Create;
+  try
+    try
+      With vInserir.cQuery do
+      begin
+         SQL.Add('EXECUTE PROCEDURE SP_PESSOA_INSERT(:P_COD_TIPOPESSOA,:P_NOME,:P_RG,:P_CPF,:P_CNPJ,:P_DT_NASC,:P_EMAIL, ');
+         SQL.Add('  :P_FONE,:P_CEP,:P_LOGRADOURO,:P_NUMERO,:P_BAIRRO,:P_CIDADE,:P_ESTADO,:P_PAIS,:P_COMPLEMENTO) ');
+         ParamByName('P_COD_TIPOPESSOA').AsInteger := p_Cod_TipoPessoa;
+         ParamByName('P_NOME').AsString := p_Nome;
+         ParamByName('P_RG').AsString := p_RG;
+         ParamByName('P_CPF').AsString := p_CPF;
+         ParamByName('P_CNPJ').AsString := p_CNPJ;
+         ParamByName('P_DT_NASC').AsString := p_DT_NASC;
+         ParamByName('P_EMAIL').AsString := p_Email;
+         ParamByName('P_FONE').AsString := p_Fone;
+         ParamByName('P_CEP').AsString := p_CEP;
+         ParamByName('P_LOGRADOURO').AsString := p_Logradouro;
+         ParamByName('P_NUMERO').AsInteger := p_Numero;
+         ParamByName('P_BAIRRO').AsString := p_Bairro;
+         ParamByName('P_CIDADE').AsString := p_Cidade;
+         ParamByName('P_ESTADO').AsString := p_Estado;
+         ParamByName('P_PAIS').AsString := p_Pais;
+         ParamByName('P_COMPLEMENTO').AsString := p_Complemento;
+         ExecSQL;
+      end;
+    except
+       raise Exception.Create('Erro na inclusão. Movimentacao Cancelada.');
+    end;
+  finally
+   vInserir.Free;
+  end;
+end;
+
+procedure TModelPessoa.SetBairro(const Value: string);
+begin
+   FCidade := Value;
+end;
+
+procedure TModelPessoa.SetCelular(const Value: string);
+begin
+   FCelular := Value;
+end;
+
+procedure TModelPessoa.SetCEP(const Value: string);
+begin
+   FCEP := Value;
+end;
+
+procedure TModelPessoa.SetCidade(const Value: string);
+begin
+   FCidade := Value;
+end;
+
+procedure TModelPessoa.SetCNPJ(const Value: string);
+begin
+   FCNPJ := Value;
+end;
+
+procedure TModelPessoa.SetCodigo(const Value: integer);
+begin
+   FCodigo := Value;
+end;
+
+procedure TModelPessoa.SetCod_TipoPessoa(const Value: integer);
+begin
+   FCod_TipoPessoa := Value;
+end;
+
+procedure TModelPessoa.SetComplemento(const Value: string);
+begin
+   FComplemento := Value;
+end;
+
+procedure TModelPessoa.SetCPF(const Value: string);
+begin
+   FCPF := Value;
+end;
+
+procedure TModelPessoa.SetDT_NASC(const Value: string);
+begin
+   FDT_NASC := Value;
+end;
+
+procedure TModelPessoa.SetEmail(const Value: string);
+begin
+   FEmail := Value;
+end;
+
+procedure TModelPessoa.SetEstado(const Value: string);
+begin
+   FEstado := Value;
+end;
+
+procedure TModelPessoa.SetLogradouro(const Value: string);
+begin
+   FLogradouro := Value;
+end;
+
+procedure TModelPessoa.SetNome(const Value: string);
+begin
+   FNome := Value;
+end;
+
+procedure TModelPessoa.SetNumero(const Value: integer);
+begin
+   FNumero := Value;
+end;
+
+procedure TModelPessoa.SetPais(const Value: string);
+begin
+   FPais := Value;
+end;
+
+procedure TModelPessoa.SetRG(const Value: string);
+begin
+   FRG := Value;
+end;
+
+procedure TModelPessoa.SetTipoPessoa(const Value: string);
+begin
+   FTipoPessoa := Value;
+end;
+
+end.

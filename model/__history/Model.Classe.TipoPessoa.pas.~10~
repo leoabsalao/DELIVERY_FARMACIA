@@ -1,0 +1,73 @@
+unit Model.Classe.TipoPessoa;
+
+interface
+uses Model.Interfaces.TipoPessoa, uConexao;
+
+type
+   TModelTipoPessoa = class(TInterfacedObject, iTipoPessoa)
+   private
+     FCodigo : integer;
+     Fdescricao : string;
+     procedure SetCodigo(const Value: integer);
+     procedure SetDescricao(const Value: string);
+   public
+     constructor Create;
+     destructor Destroy; override;
+
+     property Codigo : integer read FCodigo write SetCodigo;
+     property Descricao : string read FDescricao write SetDescricao;
+
+     procedure Inserir;
+     procedure Deletar;
+     procedure Alterar;
+     function Consultar : string;
+   end;
+
+implementation
+
+{ TModelTipoPessoa }
+
+procedure TModelTipoPessoa.Alterar;
+begin
+
+end;
+
+function TModelTipoPessoa.Consultar: string;
+begin
+
+end;
+
+constructor TModelTipoPessoa.Create;
+var
+  vConex : TConexao;
+begin
+  vConex := TConexao.Create;
+end;
+
+procedure TModelTipoPessoa.Deletar;
+begin
+  //
+end;
+
+destructor TModelTipoPessoa.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TModelTipoPessoa.Inserir;
+begin
+  //
+end;
+
+procedure TModelTipoPessoa.SetCodigo(const Value: integer);
+begin
+   FCodigo := Value;
+end;
+
+procedure TModelTipoPessoa.SetDescricao(const Value: string);
+begin
+   Fdescricao := Value;
+end;
+
+end.

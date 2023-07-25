@@ -1,0 +1,84 @@
+unit Model.Classe.TipoPessoa;
+
+interface
+uses Model.Interfaces.TipoPessoa, uConexao;
+
+type
+   TModelTipoPessoa = class(TInterfacedObject, iTipoPessoa)
+   private
+     FCodigo : integer;
+     FDescricao : string;
+     procedure SetCodigo(const Value: integer);
+     procedure SetDescricao(const Value: string);
+   public
+     constructor Create;
+     destructor Destroy; override;
+
+     property Codigo : integer read FCodigo write SetCodigo;
+     property Descricao : string read FDescricao write SetDescricao;
+
+     procedure Inserir(p_Descricao : string);
+     procedure Deletar;
+     procedure Alterar;
+     function Consultar : string;
+   end;
+
+implementation
+
+var vConex : TConexao;
+
+{ TModelTipoPessoa }
+
+procedure TModelTipoPessoa.Alterar;
+begin
+
+end;
+
+function TModelTipoPessoa.Consultar: string;
+begin
+
+end;
+
+constructor TModelTipoPessoa.Create;
+begin
+//
+end;
+
+procedure TModelTipoPessoa.Deletar;
+begin
+  //
+end;
+
+destructor TModelTipoPessoa.Destroy;
+begin
+  inherited;
+end;
+
+procedure TModelTipoPessoa.Inserir(p_Descricao : string);
+var
+  vInserir : TConexao;
+begin
+  vInserir := TConexao.Create;
+  try
+    With vInserir.cQuery do
+    begin
+       SQL.Add('EXECUTE PROCEDURE SP_TIPOPESSOA_INSERT(:P_DESCRICAO) ');
+       ParamByName('P_DESCRICAO').AsString := p_Descricao;
+       ExecSQL;
+    end;
+  finally
+   vInserir.Free;
+  end;
+end;
+
+procedure TModelTipoPessoa.SetCodigo(const Value: integer);
+begin
+   FCodigo := Value;
+end;
+
+procedure TModelTipoPessoa.SetDescricao(const Value: string);
+begin
+   FDescricao := Value;
+end;
+
+end.

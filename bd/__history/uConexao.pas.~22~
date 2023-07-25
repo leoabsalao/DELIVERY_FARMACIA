@@ -1,0 +1,87 @@
+unit uConexao;
+
+interface
+uses
+   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+   firedac.stan.Def, firedac.Stan.Pool, firedac.Stan.Async, FireDAC.Phys, Data.DB,firedac.Comp.Client,
+   FireDAC.phys.MySQLDef,firedac.Phys.FB, system.SysUtils, FireDAC.DApt, FireDAC.VCLUI.Wait, IniFiles,
+   dialogs, Forms;
+
+type
+   TConexao = class
+   private
+     FConn : TFDConnection;
+     procedure ConfigurarConex;
+     var ArqIni : TIniFile;
+   public
+     constructor Create;
+     destructor Destroy; override;
+
+     function GetConn : TFDConnection;
+     function cQuery:TFDQuery;
+     function cQConsultaCliente:TFDQuery;
+   end;
+
+implementation
+
+{ TConexao }
+
+procedure TConexao.ConfigurarConex;
+var
+  Caminho, Servidor : string;
+begin
+  try
+    ArqIni   := TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+    Servidor := ArqIni.ReadString('BANCO_PARAMS','SERVIDOR','');
+    Caminho  := ArqIni.ReadString('BANCO_PARAMS','CAMINHO','');
+    try
+     FConn.Params.DriverID := 'FB';
+     FConn.Params.Database := Servidor + ':' + Caminho;
+     FConn.Params.UserName := 'SYSDBA';
+     FConn.Params.Password := 'masterkey';
+     FConn.LoginPrompt := False;
+    except
+      MessageDlg('Configure o aqruivo INI para a conexão com o banco de dados FIREBIRD. Conexão Falhou.',mtInformation,[mbok],0);
+      exit;
+    end;
+  finally
+     FreeAndNil(ArqIni);
+  end;
+end;
+
+function TConexao.cQConsultaCliente: TFDQuery;
+var
+  vConsultaCliente : TFDQuery;
+begin
+  vConsultaCliente := TFDQuery.Create(nil);
+  vConsultaCliente.Connection := FConn;
+  Result := vConsultaCliente;
+end;
+
+function TConexao.cQuery: TFDQuery;
+var
+  vConsulta : TFDQuery;
+begin
+  vConsulta := TFDQuery.Create(nil);
+  vConsulta.Connection := FConn;
+  Result := vConsulta;
+end;
+
+constructor TConexao.Create;
+begin
+   FConn := TFDConnection.Create(nil);
+   Self.ConfigurarConex();
+end;
+
+destructor TConexao.Destroy;
+begin
+  FreeAndNil(FConn);
+  inherited;
+end;
+
+function TConexao.GetConn: TFDConnection;
+begin
+   Result := FConn;
+end;
+
+end.

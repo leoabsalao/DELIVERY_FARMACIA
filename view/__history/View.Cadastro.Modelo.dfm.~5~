@@ -1,0 +1,30 @@
+object fModeloCadastro: TfModeloCadastro
+  Left = 0
+  Top = 0
+  Caption = 'fCadastro'
+  ClientHeight = 517
+  ClientWidth = 952
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -15
+  Font.Name = 'MS Reference Sans Serif'
+  Font.Style = [fsBold]
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  Position = poDesktopCenter
+  Visible = True
+  OnClose = FormClose
+  TextHeight = 19
+  object pnlTopoPrincipal: TPanel
+    Left = 0
+    Top = 0
+    Width = 952
+    Height = 97
+    Align = alTop
+    BevelOuter = bvSpace
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+  end
+end

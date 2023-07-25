@@ -1,0 +1,7 @@
+unit Model.Interfaces.Pedido;
+
+interface
+
+implementation
+
+end.

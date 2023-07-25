@@ -1,0 +1,16 @@
+unit Model.Interfaces.Pedido;
+
+interface
+
+type
+   iPedido = interface
+   ['{45C9B182-129B-4834-AAB0-8C1E7FC964D8}']
+
+      procedure InserirPedido();
+      procedure AlterarPedido();
+   end;
+
+
+implementation
+
+end.

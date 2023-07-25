@@ -1,0 +1,137 @@
+unit View.RotaPedidos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Cadastro.Modelo, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.DBCtrls, Data.DB, Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfRotaPedidos = class(TfModeloCadastro)
+    Panel2: TPanel;
+    btnSalvar: TButton;
+    btnFechar: TButton;
+    Panel1: TPanel;
+    Label3: TLabel;
+    edtNumRota: TEdit;
+    Label4: TLabel;
+    cbEntregador: TDBLookupComboBox;
+    cdsPedido: TClientDataSet;
+    DsPedido: TDataSource;
+    cdsPedidoCLIENTE: TStringField;
+    cdsPedidoNUM_PEDIDO: TIntegerField;
+    GroupBox1: TGroupBox;
+    dbGridRotaPedidos: TDBGrid;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure CarregaDadosEntregador;
+    procedure CarregaPedido;
+    procedure InserirRotaPedido;
+  public
+    { Public declarations }
+  end;
+
+var
+  fRotaPedidos: TfRotaPedidos;
+
+implementation
+
+uses
+  Model.Classe.Rotas, Model.Interfaces.Rotas, uConexao, UDMConex,
+  Utilidades.Modelo, View.MainProjeto;
+
+{$R *.dfm}
+
+
+procedure TfRotaPedidos.btnFecharClick(Sender: TObject);
+begin
+  inherited;
+  close;
+end;
+
+procedure TfRotaPedidos.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+  if cbEntregador.KeyValue = null then
+     raise Exception.Create('Selecione o Entregador.');
+
+  InserirRotaPedido;
+end;
+
+procedure TfRotaPedidos.CarregaDadosEntregador;
+begin
+ with DMConex.QEntregador do
+ begin
+   Close;
+   Open;
+ end;
+end;
+
+procedure TfRotaPedidos.CarregaPedido;
+var
+  vConsultaPedido : TConexao;
+begin
+  vConsultaPedido := TConexao.Create;
+  try
+    with vConsultaPedido.cQuery do
+    begin
+      SQL.Add('Select RNUM_PEDIDO,RCLIENTE from SP_PEDIDO_ORDEM_ENTREGA');
+      Open;
+      First;
+      while not eof do
+      begin
+        if not cdsPedido.Locate('NUM_PEDIDO',FieldByName('RNUM_PEDIDO').AsInteger,[]) then
+        begin
+          cdsPedido.Append;
+          cdsPedido.FieldByName('NUM_PEDIDO').AsInteger := FieldByName('RNUM_PEDIDO').AsInteger;
+          cdsPedido.FieldByName('CLIENTE').AsString := FieldByName('RCLIENTE').AsString;
+          cdsPedido.Post;
+        end;
+        Next;
+      end;
+    end;
+  finally
+    FreeAndNil(vConsultaPedido);
+  end;
+end;
+
+procedure TfRotaPedidos.FormCreate(Sender: TObject);
+var
+   vNum_Rota : integer;
+   vRotaPedido : TModelRotas;
+begin
+  inherited;
+  vRotaPedido := TModelRotas.Create;
+  edtNumRota.Text := IntToStr(vRotaPedido.GeraNumRotas);
+  CarregaDadosEntregador;
+  CarregaPedido;
+end;
+
+procedure TfRotaPedidos.InserirRotaPedido;
+var
+  vEntregadorPedido : iRotas;
+  I : integer;
+begin
+  vEntregadorPedido := TModelRotas.Create;
+  with cdsPedido do begin
+    First;
+    if RecordCount = 0 then
+      raise Exception.Create('Não existem pedidos em aberto. Movimentacao cancelada.');
+
+    for I := 0 to 4 do
+      vEntregadorPedido.InserirRota(strtoint(edtNumRota.Text),cbEntregador.KeyValue,FieldByName('NUM_PEDIDO').AsInteger,'PENDENTE');
+
+    Next;
+  end;
+end;
+
+end.

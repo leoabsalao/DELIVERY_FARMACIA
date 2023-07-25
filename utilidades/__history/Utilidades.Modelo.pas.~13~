@@ -1,0 +1,79 @@
+unit Utilidades.Modelo;
+
+interface
+uses  Winapi.Windows, Winapi.Messages,System.SysUtils, System.Variants, System.Classes,
+      DateUtils, Vcl.Grids, Vcl.DBGrids;
+
+type
+   TUtilidades = class
+   private
+    //
+   public
+     constructor Create;
+     destructor Destroy; override;
+
+     function GetVersaoArq: string;
+     function HoraAtual: string;
+     function DataAtual: string;
+     function FormataCEP(vCEP_Antigo : string): string;
+
+     procedure DimensionarGrid(dbg: TDbGrid; var formulario);
+   end;
+
+implementation
+
+{ TUtilidades }
+
+constructor TUtilidades.Create;
+begin
+//
+end;
+
+function TUtilidades.DataAtual: string;
+begin
+  result := FormatDateTime('dddd dd "de" mmmm "de" yyyy',Now);
+end;
+
+destructor TUtilidades.Destroy;
+begin
+  inherited;
+end;
+
+function TUtilidades.FormataCEP(vCEP_Antigo: string): string;
+var
+  CEP_Formatado: string;
+begin
+  CEP_Formatado := vCEP_Antigo;
+  CEP_Formatado := StringReplace(CEP_Formatado, '.', '', [rfReplaceAll]);
+  CEP_Formatado := StringReplace(CEP_Formatado, '-', '', [rfReplaceAll]);
+  Result := CEP_Formatado;
+end;
+
+function TUtilidades.GetVersaoArq: string;
+var
+  VerInfoSize: DWORD;
+  VerInfo: Pointer;
+  VerValueSize: DWORD;
+  VerValue: PVSFixedFileInfo;
+  Dummy: DWORD;
+begin
+  VerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), Dummy);
+  GetMem(VerInfo, VerInfoSize);
+  GetFileVersionInfo(PChar(ParamStr(0)), 0,VerInfoSize, VerInfo);
+  VerQueryValue(VerInfo, '\', Pointer(VerValue),VerValueSize);
+  with VerValue^ do
+  begin
+    Result := IntToStr(dwFileVersionMS shr 16);
+    Result := Result + '.' + IntToStr(dwFileVersionMS and $FFFF);
+    Result := Result + '.' + IntToStr(dwFileVersionLS shr 16);
+    Result := Result + '.' + IntToStr(dwFileVersionLS and $FFFF);
+  end;
+  FreeMem(VerInfo, VerInfoSize);
+end;
+
+function TUtilidades.HoraAtual: string;
+begin
+  result := TimeToStr(Now);
+end;
+
+end.

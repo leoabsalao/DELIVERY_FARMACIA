@@ -1,0 +1,95 @@
+unit View.MainProjeto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Principal, Vcl.ExtCtrls,
+  System.Actions, Vcl.ActnList, Vcl.Menus, Vcl.StdCtrls, UDMConex, Vcl.Buttons,
+  View.Pedidos;
+
+type
+  TfMainProjeto = class(TfPrincipal)
+    pnlTopoPrincipal: TPanel;
+    MainMenu: TMainMenu;
+    Sistema1: TMenuItem;
+    Sairdaaplicao1: TMenuItem;
+    Sobre1: TMenuItem;
+    actMenu: TActionList;
+    actSairSistema: TAction;
+    Panel1: TPanel;
+    Label1: TLabel;
+    lblHoraAtual: TLabel;
+    TimerMain: TTimer;
+    lblDataAtual: TLabel;
+    Movimentao1: TMenuItem;
+    Pedidos1: TMenuItem;
+    SpeedButton1: TSpeedButton;
+    actPedidos: TAction;
+    SpeedButton2: TSpeedButton;
+    Cadastros1: TMenuItem;
+    Produtos1: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+    procedure actSairSistemaExecute(Sender: TObject);
+    procedure TimerMainTimer(Sender: TObject);
+    procedure actPedidosExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fMainProjeto: TfMainProjeto;
+
+implementation
+
+{$R *.dfm}
+
+uses Utilidades.Modelo;
+
+procedure TfMainProjeto.actPedidosExecute(Sender: TObject);
+begin
+  inherited;
+  Application.CreateForm(TfPedidos,fPedidos);
+  fPedidos.Show;
+end;
+
+procedure TfMainProjeto.actSairSistemaExecute(Sender: TObject);
+begin
+  inherited;
+  if application.MessageBox('Você tem certeza que deseja sair do sistema?','Sair da Aplicação',mb_yesno+mb_iconquestion) = idyes then
+  begin
+   Application.Terminate;
+  end;
+end;
+
+procedure TfMainProjeto.FormCreate(Sender: TObject);
+var
+  vUtil : TUtilidades;
+begin
+  inherited;
+  try
+    vUtil := TUtilidades.Create;
+    self.Caption := 'Sistema Modelo para Implementações, Cadastros e Pesquisa - '+'Versão: '+vUtil.GetVersaoArq;
+  finally
+    FreeAndNil(vUtil);
+  end;
+end;
+
+procedure TfMainProjeto.TimerMainTimer(Sender: TObject);
+var
+  vHoraData : TUtilidades;
+begin
+  inherited;
+  try
+    vHoraData := TUtilidades.Create;
+    lblHoraAtual.Caption := vHoraData.HoraAtual;
+    lblDataAtual.Caption := vHoraData.DataAtual;
+  finally
+    FreeAndNil(vHoraData);
+  end;
+
+end;
+
+end.

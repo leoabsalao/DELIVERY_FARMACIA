@@ -1,0 +1,15 @@
+unit Model.Interfaces.Pessoa;
+
+interface
+
+type
+    iPessoa = interface
+     ['{9846B124-460A-4EA9-A655-76907D2268AE}']
+      procedure Inserir(p_Descricao : string);
+      procedure Deletar(p_Id : integer);
+      procedure Alterar(p_Id : integer; p_Descricao : string);
+    end;
+
+implementation
+
+end.

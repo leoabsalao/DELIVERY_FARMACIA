@@ -1,0 +1,33 @@
+unit View.Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TfPrincipal = class(TForm)
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fPrincipal: TfPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ If MessageDlg('Você tem certeza que deseja sair do sistema?',mtConfirmation,[mbyes,mbno],0)=mryes then
+ begin
+  Application.Terminate;
+ end;
+end;
+
+end.

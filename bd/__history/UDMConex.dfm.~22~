@@ -1,0 +1,61 @@
+object DMConex: TDMConex
+  OnCreate = DataModuleCreate
+  Height = 299
+  Width = 617
+  object DsCliente: TDataSource
+    DataSet = QCliente
+    Left = 512
+    Top = 168
+  end
+  object QCliente: TFDQuery
+    Connection = FConex
+    SQL.Strings = (
+      'Select Codigo, Nome from tb_pessoa where COD_TIPOPESSOA = 2')
+    Left = 512
+    Top = 104
+    object QClienteCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object QClienteNome: TStringField
+      FieldName = 'Nome'
+      Size = 100
+    end
+  end
+  object FConex: TFDConnection
+    Params.Strings = (
+      'DriverID=FB'
+      'User_Name=sysdba'
+      'Password=masterkey')
+    LoginPrompt = False
+    Left = 512
+    Top = 40
+  end
+  object DsProduto: TDataSource
+    DataSet = QProduto
+    Left = 416
+    Top = 168
+  end
+  object QProduto: TFDQuery
+    Connection = FConex
+    SQL.Strings = (
+      'Select '
+      '   t.CODIGO,'
+      '   t.DESCRICAO,'
+      '   t.NUM_REF, '
+      '   tt.DESCRICAO as TIPO_PRODUTO,   '
+      '   t.DT_VALIDADE,'
+      '   t.QUANT,'
+      '   Case t.TIPO_COMUM WHEN true then '#39'X'#39' end as TIPO_COMUM,'
+      
+        '   Case t.TIPO_CONTROLADO WHEN true then '#39'X'#39' end as TIPO_CONTROL' +
+        'ADO,'
+      '   Case t.TIPO_SENSIVEL WHEN true then '#39'X'#39' end as TIPO_SENSIVEL,'
+      '   t.PRESC_MEDICA,'
+      '   t.CUIDADO_ARMAZ '
+      'from tb_produto t, TB_TIPOPRODUTO tt'
+      'where t.COD_TIPOPRODUTO = tt.CODIGO '
+      'Order by t.DESCRICAO ')
+    Left = 416
+    Top = 104
+  end
+end

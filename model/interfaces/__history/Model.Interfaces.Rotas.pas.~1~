@@ -1,0 +1,13 @@
+unit Model.Interfaces.Rotas;
+
+interface
+
+type
+  iRotas = interface
+   ['{4BE29D43-ED69-4D47-BD40-71831F9D5080}']
+
+  end;
+
+implementation
+
+end.
